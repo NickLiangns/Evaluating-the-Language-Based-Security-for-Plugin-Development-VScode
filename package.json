@@ -1,0 +1,271 @@
+{
+  
+  "name": "highlighter",
+  
+  "displayName": "highlighter",
+  
+  "description": "",
+  
+  "version": "0.0.1",
+  
+  "engines": {
+  
+    
+  "vscode": "^1.77.0"
+  
+  },
+  
+  "categories": [
+  
+    
+  "Other"
+  
+  ],
+  
+  "activationEvents": [
+  
+    
+  "onCommand:getFileState",
+  
+    
+  "onCommand:createTextFile"
+  
+  ],
+  
+  "main": "./extension.js",
+  
+  "contributes": {
+  
+    
+  "commands": [
+  
+    
+    
+  {
+  
+    
+    
+    
+  "command": "getFileState",
+  
+    
+    
+    
+  "title": "File State"
+  
+    
+    
+  },
+  
+    
+    
+  {
+  
+    
+    
+    
+  "command": "createTextFile",
+  
+    
+    
+    
+  "title": "createTextFile"
+  
+    
+    
+  }
+  
+    
+  ],
+  
+    
+  "menus": {
+  
+    
+    
+  "editor/context": [
+  
+    
+    
+    
+  {
+  
+    
+    
+    
+    
+  "when": "editorFocus",
+  
+    
+    
+    
+    
+  "command": "getFileState",
+  
+    
+    
+    
+    
+  "group": "navigation"
+  
+    
+    
+    
+  },
+  
+    
+    
+    
+  {
+  
+    
+    
+    
+    
+  "when": "editorFocus",
+  
+    
+    
+    
+    
+  "command": "createTextFile",
+  
+    
+    
+    
+    
+  "group": "navigation"
+  
+    
+    
+    
+  }
+  
+    
+    
+  ],
+  
+    
+    
+  "explorer/context": [
+  
+    
+    
+    
+  {
+  
+    
+    
+    
+    
+  "command": "getFileState",
+  
+    
+    
+    
+    
+  "group": "navigation"
+  
+    
+    
+    
+  },
+  
+    
+    
+    
+  {
+  
+    
+    
+    
+    
+  "command": "createTextFile",
+  
+    
+    
+    
+    
+  "group": "navigation"
+  
+    
+    
+    
+  }
+  
+    
+    
+  ]
+  
+    
+  }
+  
+  },
+  
+  "keywords": [
+  
+    
+  "highlight",
+  
+    
+  "selected",
+  
+    
+  "words"
+  
+  ],
+  
+  "scripts": {
+  
+    
+  "lint": "eslint .",
+  
+    
+  "pretest": "npm run lint",
+  
+    
+  "test": "node ./test/runTest.js"
+  
+  },
+  
+  "devDependencies": {
+  
+    
+  "@types/glob": "^8.1.0",
+  
+    
+  "@types/mocha": "^10.0.1",
+  
+    
+  "@types/node": "16.x",
+  
+    
+  "@types/vscode": "^1.77.0",
+  
+    
+  "@vscode/test-electron": "^2.3.0",
+  
+    
+  "eslint": "^8.36.0",
+  
+    
+  "glob": "^8.1.0",
+  
+    
+  "mocha": "^10.2.0",
+  
+    
+  "typescript": "^4.9.5"
+  
+  },
+  
+  "dependencies": {
+  
+    
+  "@types/node-fetch": "^2.6.3",
+  
+    
+  "node-fetch": "^3.3.1"
+  
+  }
+}

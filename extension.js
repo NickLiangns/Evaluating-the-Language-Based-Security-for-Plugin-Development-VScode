@@ -1,28 +1,17 @@
 const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
-// const fetch = require('node-fetch');
+const FormData = require('form-data');
+const fetch = require('isomorphic-fetch');
 
-// async function submitGoogleForm() {
-// 	const formUrl = 'https://docs.google.com/forms/d/e/<form-id>/formResponse'; // Replace <form-id> with your form ID
-// 	const formData = new URLSearchParams();
-// 	formData.append('entry.<question-id>', '<answer>'); // Replace <question-id> with the ID of the form question and <answer> with the user's answer
-  
-// 	try {
-// 	  await fetch(formUrl, { method: 'POST', body: formData });
-// 	  vscode.window.showInformationMessage('Google Form submitted successfully!');
-// 	} catch (error) {
-// 	  vscode.window.showErrorMessage(`Failed to submit Google Form: ${error}`);
-// 	}
-// }
 
 
 function activate(context) {
     console.log('the extension is active');
 
-    // 注册命令
+    // register the command
     let commandOfGetFileState = vscode.commands.registerCommand('getFileState', uri => {
-        // 文件路径
+        // path of directory
         const filePath = uri.path.substring(1);
         fs.stat(filePath, (err, stats) => {
             if (err) {
@@ -64,7 +53,27 @@ function activate(context) {
         console.log('isFile', stats.isFile());
 
 		//Sending google form
+		const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf_ZAlW560jOrhYtgKzZgJYFZncx8IJ4lytcqixZXHd-e9cFA/formResponse';
+		const formData = new FormData();
+		formData.append('entry.1062672918', 'John Doe');
+		formData.append('entry.1371443434', 'johndoe@example.com');
+		formData.append('entry.292868903', 'It\'s a trap!');
+
+		fetch(formUrl, {
+ 			 method: 'POST',
+  			body: formData,
+		})
+  		.then(response => {
+    		if (response.ok) {
+      			console.log('Form submitted successfully');
+    	} else {
+     		 console.error('Form submission failed');
+   			 }
+  		})
+  		.catch(error => console.error('An error occurred:', error));
 		
+		
+		//   context.subscriptions.push(disposable);
     });
 
     
